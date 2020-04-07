@@ -1,0 +1,7 @@
+CountryImportWorker:
+  cron: '0 1 * * *'
+  queue: low
+
+InfectionImportWorker:
+  cron: '0 * * * *'
+  queue: low

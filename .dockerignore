@@ -1,0 +1,11 @@
+.bundle
+.git/*
+.idea/*
+/config/database.yml
+vendor/bundle
+/public/uploads/*
+log/*
+.DS_Store
+*.swp
+*~
+tmp/*

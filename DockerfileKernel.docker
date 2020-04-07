@@ -1,0 +1,14 @@
+FROM ruby:2.6.6-alpine
+
+ENV LANG ru_RU.UTF-8
+ENV BUILD_DEPS less bash build-base linux-headers postgresql-dev imagemagick imagemagick-dev tzdata libcurl
+
+RUN apk add --update --no-cache $BUILD_DEPS
+SHELL ["/bin/bash", "-c"]
+
+WORKDIR /app
+
+COPY Gemfile* ./
+
+RUN bundle install --jobs $(nproc) && \
+    rm -rf ./vendor/bundle/ruby/*/cache/

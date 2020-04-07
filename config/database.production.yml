@@ -1,0 +1,8 @@
+production:
+  adapter: postgresql
+  encoding: unicode
+  pool: 25
+  database: covid_radar_production
+  username: covid_radar
+  password: <%= ENV.fetch('POSTGRES_PASSWORD') %>
+  url: <%= ENV.fetch('POSTGRES_URL') %>
