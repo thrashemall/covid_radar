@@ -136,7 +136,8 @@ CREATE TABLE public.users (
     username character varying,
     language_code character varying,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    reported boolean DEFAULT false NOT NULL
 );
 
 
@@ -256,6 +257,13 @@ CREATE INDEX index_infections_on_id ON public.infections USING btree (id) WHERE 
 
 
 --
+-- Name: index_users_on_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_users_on_id ON public.users USING btree (id) WHERE (reported = false);
+
+
+--
 -- Name: index_users_on_uid_and_chat_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -279,6 +287,7 @@ SET search_path TO "$user", public;
 INSERT INTO "schema_migrations" (version) VALUES
 ('20200407120145'),
 ('20200407121907'),
-('20200407165926');
+('20200407165926'),
+('20200408182941');
 
 

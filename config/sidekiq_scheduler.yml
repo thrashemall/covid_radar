@@ -5,3 +5,7 @@ CountryImportWorker:
 InfectionImportWorker:
   cron: '0 * * * *'
   queue: low
+
+UserReportingWorker:
+  cron: '*/5 * * * *'
+  queue: low

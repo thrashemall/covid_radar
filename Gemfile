@@ -9,6 +9,7 @@ gem 'puma'
 gem 'gruff'
 gem 'dotenv-rails'
 gem 'sentry-raven'
+gem 'slack-notifier'
 
 # transport
 gem 'faraday'
