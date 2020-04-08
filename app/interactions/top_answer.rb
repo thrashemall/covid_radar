@@ -10,7 +10,7 @@ class TopAnswer < ApplicationInteraction
   def io
     infections.each_with_index.with_object(StringIO.new) do |(infection, index), io|
       io << <<~DOC
-        #{index.next}. #{infection.country.name} / #{Formatter.number(infection.confirmed)} (#{Formatter.signed_number(infection.confirmed_rate)}%)
+        #{index.next}. #{infection.country.name} / #{Formatter.number(infection.confirmed)} (#{Formatter.signed_number(infection.confirmed_rate, &Formatter.method(:percentage))})
       DOC
     end
   end

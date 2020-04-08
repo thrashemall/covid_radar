@@ -26,10 +26,6 @@ class Infection < ApplicationRecord
   belongs_to :country
 
   def summary
-    <<~DOC
-      Confirmed: #{Formatter.number(confirmed)} (#{Formatter.signed_number(confirmed_delta)} / #{Formatter.signed_number(confirmed_rate)}%)
-      Recovered: #{Formatter.number(recovered)} (#{Formatter.signed_number(recovered_delta)} / #{Formatter.signed_number(recovered_rate)}%)
-      Deaths: #{Formatter.number(deaths)} (#{Formatter.signed_number(deaths_delta)} / #{Formatter.signed_number(deaths_rate)}%)
-    DOC
+    Infections::SummaryService.new(self).call
   end
 end
